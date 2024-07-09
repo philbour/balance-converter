@@ -1,5 +1,7 @@
 package org.philbour.converter.model;
 
+import static java.util.stream.Collectors.joining;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
@@ -28,7 +30,6 @@ public class Currency {
         return denominations;
     }
 
-    // could have the calculate method here?
     public String calculate(long balance) {
         Map<String, Long> result = new LinkedHashMap<>();
         long remaining = balance;
@@ -38,12 +39,16 @@ public class Currency {
                 if (unit.getValue() <= remaining) {
                     long times = remaining / unit.getValue();
                     remaining -= times * unit.getValue();
-                    result.put(unit.getCode(), times);
+                    result.put(unit.getDescription(), times);
                 }
             }
         }
 
-        return result.toString();
+        return result.entrySet()
+                .stream()
+                .map(e -> e.getValue() + " " + e.getKey())
+                .collect(joining(", "))
+                .concat(" coins");
     }
 
 }

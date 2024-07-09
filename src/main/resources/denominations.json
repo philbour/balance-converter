@@ -6,37 +6,37 @@
       "denominations": [
         {
           "code": "100dollar",
-          "description": "100 dollars",
+          "description": "100 Dollar",
           "value": 10000,
           "type": "note"
         },
         {
           "code": "50dollar",
-          "description": "50 dollars",
+          "description": "50 Dollar",
           "value": 5000,
           "type": "note"
         },
         {
           "code": "20dollar",
-          "description": "20 dollars",
+          "description": "20 Dollar",
           "value": 2000,
           "type": "note"
         },
         {
           "code": "10dollar",
-          "description": "10 dollars",
+          "description": "10 Dollar",
           "value": 1000,
           "type": "note"
         },
         {
           "code": "5dollar",
-          "description": "5 dollars",
+          "description": "5 Dollar",
           "value": 500,
           "type": "note"
         },
         {
           "code": "1dollar",
-          "description": "1 dollar",
+          "description": "Dollar",
           "value": 100,
           "type": "note"
         },
@@ -54,13 +54,13 @@
         },
         {
           "code": "nickel",
-          "description": "5 Cent",
+          "description": "Nickel",
           "value": 5,
           "type": "coin"
         },
         {
           "code": "1cent",
-          "description": "1 Cent",
+          "description": "Penny",
           "value": 1,
           "type": "coin"
         }
@@ -72,91 +72,91 @@
       "denominations": [
         {
           "code": "5cent",
-          "description": "5 cents",
+          "description": "5c",
           "value": 5,
           "type": "coin"
         },
         {
           "code": "10cent",
-          "description": "10 cents",
+          "description": "10c",
           "value": 10,
           "type": "coin"
         },
         {
           "code": "500euro",
-          "description": "500 euros",
+          "description": "500 Euro",
           "value": 50000,
           "type": "note"
         },
         {
           "code": "20cent",
-          "description": "20 cents",
+          "description": "20c",
           "value": 20,
           "type": "coin"
         },
         {
           "code": "5euro",
-          "description": "5 euros",
+          "description": "5 Euro",
           "value": 500,
           "type": "note"
         },
         {
           "code": "10euro",
-          "description": "10 euros",
+          "description": "10 Euro",
           "value": 1000,
           "type": "note"
         },
         {
           "code": "20euro",
-          "description": "20 euros",
+          "description": "20 Euro",
           "value": 2000,
           "type": "note"
         },
         {
           "code": "50euro",
-          "description": "50 euros",
+          "description": "50 Euro",
           "value": 5000,
           "type": "note"
         },
         {
           "code": "200euro",
-          "description": "200 euros",
+          "description": "200 Euro",
           "value": 20000,
           "type": "note"
         },
         {
           "code": "100euro",
-          "description": "100 euros",
+          "description": "100 Euro",
           "value": 10000,
           "type": "note"
         },
         {
           "code": "1cent",
-          "description": "1 cent",
+          "description": "1c",
           "value": 1,
           "type": "coin"
         },
         {
           "code": "2cent",
-          "description": "2 cents",
+          "description": "2c",
           "value": 2,
           "type": "coin"
         },
         {
           "code": "50cent",
-          "description": "50 cents",
+          "description": "50c",
           "value": 50,
           "type": "coin"
         },
         {
           "code": "1euro",
-          "description": "1 euro",
+          "description": "1 Euro",
           "value": 100,
           "type": "coin"
         },
         {
           "code": "2euro",
-          "description": "2 euros",
+          "description": "2 Euro",
           "value": 200,
           "type": "coin"
         }

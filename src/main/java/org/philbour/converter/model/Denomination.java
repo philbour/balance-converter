@@ -20,7 +20,7 @@ public class Denomination implements Comparable<Denomination> {
         return code;
     }
 
-    public String getDescrption() {
+    public String getDescription() {
         return description;
     }
 
