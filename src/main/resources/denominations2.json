@@ -1,0 +1,170 @@
+[
+  {
+    "key": "usd",
+    "value": {
+      "code": "usd",
+      "description": "United States Dollar",
+      "denominations": [
+        {
+          "code": "100dollar",
+          "description": "100 dollars",
+          "value": 10000,
+          "type": "note"
+        },
+        {
+          "code": "50dollar",
+          "description": "50 dollars",
+          "value": 5000,
+          "type": "note"
+        },
+        {
+          "code": "20dollar",
+          "description": "20 dollars",
+          "value": 2000,
+          "type": "note"
+        },
+        {
+          "code": "10dollar",
+          "description": "10 dollars",
+          "value": 1000,
+          "type": "note"
+        },
+        {
+          "code": "5dollar",
+          "description": "5 dollars",
+          "value": 500,
+          "type": "note"
+        },
+        {
+          "code": "1dollar",
+          "description": "1 dollar",
+          "value": 100,
+          "type": "note"
+        },
+        {
+          "code": "quarter",
+          "description": "Quarter",
+          "value": 25,
+          "type": "coin"
+        },
+        {
+          "code": "dime",
+          "description": "Dime",
+          "value": 10,
+          "type": "coin"
+        },
+        {
+          "code": "nickel",
+          "description": "5 Cent",
+          "value": 5,
+          "type": "coin"
+        },
+        {
+          "code": "1cent",
+          "description": "1 Cent",
+          "value": 1,
+          "type": "coin"
+        }
+      ]
+    }
+  },
+  {
+    "key": "eur",
+    "value": {
+      "code": "eur",
+      "description": "Euro",
+      "denominations": [
+        {
+          "code": "5cent",
+          "description": "5 cents",
+          "value": 5,
+          "type": "coin"
+        },
+        {
+          "code": "10cent",
+          "description": "10 cents",
+          "value": 10,
+          "type": "coin"
+        },
+        {
+          "code": "500euro",
+          "description": "500 euros",
+          "value": 50000,
+          "type": "note"
+        },
+        {
+          "code": "20cent",
+          "description": "20 cents",
+          "value": 20,
+          "type": "coin"
+        },
+        {
+          "code": "5euro",
+          "description": "5 euros",
+          "value": 500,
+          "type": "note"
+        },
+        {
+          "code": "10euro",
+          "description": "10 euros",
+          "value": 1000,
+          "type": "note"
+        },
+        {
+          "code": "20euro",
+          "description": "20 euros",
+          "value": 2000,
+          "type": "note"
+        },
+        {
+          "code": "50euro",
+          "description": "50 euros",
+          "value": 5000,
+          "type": "note"
+        },
+        {
+          "code": "200euro",
+          "description": "200 euros",
+          "value": 20000,
+          "type": "note"
+        },
+        {
+          "code": "100euro",
+          "description": "100 euros",
+          "value": 10000,
+          "type": "note"
+        },
+        {
+          "code": "1cent",
+          "description": "1 cent",
+          "value": 1,
+          "type": "coin"
+        },
+        {
+          "code": "2cent",
+          "description": "2 cents",
+          "value": 2,
+          "type": "coin"
+        },
+        {
+          "code": "50cent",
+          "description": "50 cents",
+          "value": 50,
+          "type": "coin"
+        },
+        {
+          "code": "1euro",
+          "description": "1 euro",
+          "value": 100,
+          "type": "coin"
+        },
+        {
+          "code": "2euro",
+          "description": "2 euros",
+          "value": 200,
+          "type": "coin"
+        }
+      ]
+    }
+  }
+]

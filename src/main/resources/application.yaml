@@ -1,0 +1,15 @@
+spring:
+  main:
+    banner-mode: "off"
+    
+logging:
+  level:
+    org.philbour: DEBUG
+
+server:
+  servlet:
+    context-path: /todo/api
+    
+springdoc:
+  swagger-ui.path: /docs/swagger-ui
+  api-docs.path: /docs
