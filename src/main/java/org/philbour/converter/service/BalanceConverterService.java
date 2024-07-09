@@ -1,7 +1,7 @@
 package org.philbour.converter.service;
 
 import org.philbour.converter.model.Currency;
-import org.philbour.converter.model.CurrencyDenominations;
+import org.philbour.converter.model.json.CurrencyDenominations;
 import org.philbour.converter.util.JsonReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

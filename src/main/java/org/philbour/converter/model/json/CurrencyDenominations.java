@@ -6,7 +6,9 @@
  * permission of the Avaya owner.
  */
 
-package org.philbour.converter.model;
+package org.philbour.converter.model.json;
+
+import org.philbour.converter.model.Currency;
 
 import java.util.ArrayList;
 import java.util.List;

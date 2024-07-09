@@ -8,7 +8,7 @@ logging:
 
 server:
   servlet:
-    context-path: /todo/api
+    context-path: /balance
     
 springdoc:
   swagger-ui.path: /docs/swagger-ui

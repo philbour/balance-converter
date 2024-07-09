@@ -26,13 +26,10 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		
 		<!-- Spring BOM overrides -->
-		<kafka.version>3.6.1</kafka.version>
 		<junit-jupiter.version>5.10.2</junit-jupiter.version>
 
 		<!-- Other 3rd party dependencies -->
 		<awaitility.version>4.2.1</awaitility.version>
-		<common-protos.version>2.38.0</common-protos.version>
-		<proto-java-util.version>4.26.1</proto-java-util.version>
 		<commons-collections4.version>4.4</commons-collections4.version>
 		<jacoco.version>0.8.12</jacoco.version>
        
@@ -40,12 +37,9 @@
         <commons-io.version>2.16.1</commons-io.version>
         <awaitility.version>4.2.1</awaitility.version>
         <testcontainers.version>1.19.8</testcontainers.version>
-        <junit-pioneer.version>2.2.0</junit-pioneer.version>
-        <javafaker.version>1.0.2</javafaker.version>
 
 		<!-- containerization -->
 		<docker-spotify-plugin.version>1.4.13</docker-spotify-plugin.version>
-		<docker.image.prefix>nubesnovem-docker-hosted.forge.avaya.com</docker.image.prefix>
 	</properties>
 
 	<dependencyManagement>
@@ -73,21 +67,8 @@
 
         <dependency>
             <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-ui</artifactId>
-            <version>1.8.0</version>
-        </dependency>
-        
-        <!-- Protobuf -->
-		<dependency>
-			<groupId>com.google.api.grpc</groupId>
-			<artifactId>proto-google-common-protos</artifactId>
-			<version>${common-protos.version}</version>
-		</dependency>
-        
-        <dependency>
-            <groupId>com.google.protobuf</groupId>
-            <artifactId>protobuf-java-util</artifactId>
-            <version>${proto-java-util.version}</version>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>2.6.0</version>
         </dependency>
         
 		<dependency>
@@ -96,10 +77,6 @@
 			<version>${commons-collections4.version}</version>
 		</dependency>
 		
-		<dependency>
-			<groupId>org.yaml</groupId>
-			<artifactId>snakeyaml</artifactId>
-		</dependency>
 		<dependency>
 		 	<groupId>com.google.code.gson</groupId>
 		  	<artifactId>gson</artifactId>
@@ -157,62 +134,7 @@
 		    <artifactId>junit-jupiter</artifactId>
 		    <scope>test</scope>
 		</dependency>
-		<dependency>
-		    <groupId>org.testcontainers</groupId>
-		    <artifactId>kafka</artifactId>
-		    <scope>test</scope>
-		</dependency>
-		<dependency>
-            <groupId>org.junit-pioneer</groupId>
-            <artifactId>junit-pioneer</artifactId>
-            <version>${junit-pioneer.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-		<dependency>
-		    <groupId>com.github.javafaker</groupId>
-		    <artifactId>javafaker</artifactId>
-		    <version>${javafaker.version}</version>
-		    <scope>test</scope>
-		</dependency>
 	</dependencies>
-
-	<profiles>
-		<profile>
-			<id>production</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<properties>
-				<envName>production</envName>
-			</properties>
-		</profile>
-
-		<profile>
-			<id>dev</id>
-			<properties>
-				<envName>development</envName>
-			</properties>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-deploy-plugin</artifactId>
-						<configuration>
-							<skip>true</skip>
-						</configuration>
-					</plugin>
-					<plugin>
-						<groupId>com.spotify</groupId>
-						<artifactId>dockerfile-maven-plugin</artifactId>
-						<configuration>
-							<tag>${user.name}</tag>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
 
 	<build>
 		<plugins>
@@ -221,27 +143,27 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<configuration>
-					<useSystemClassLoader>true</useSystemClassLoader>
-					<useManifestOnlyJar>true</useManifestOnlyJar>
-					<!-- workaround for https://github.com/docker-library/openjdk/issues/247 -->
-					<argLine>${argLine}
-						-Djdk.net.URLClassPath.disableClassPathURLCheck=true -Djdk.attach.allowAttachSelf=true --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED
-					</argLine>
-				</configuration>
-				<executions>
-					<execution>
-						<id>default-test</id>
-						<phase>test</phase>
-						<goals>
-							<goal>test</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+			 <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <useSystemClassLoader>true</useSystemClassLoader>
+                    <useManifestOnlyJar>true</useManifestOnlyJar>
+                    <!-- workaround for
+                    https://github.com/docker-library/openjdk/issues/247 -->
+                    <argLine>${argLine}
+                        -Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>default-test</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 
 			<plugin>
 				<groupId>org.jacoco</groupId>
@@ -269,9 +191,8 @@
 				<artifactId>dockerfile-maven-plugin</artifactId>
 				<version>${docker-spotify-plugin.version}</version>
 				<configuration>
-					<repository>${docker.image.prefix}/${project.artifactId}</repository>
-					<tag>${project.version}</tag>
-					<useMavenSettingsForAuth>true</useMavenSettingsForAuth>
+					<repository>${project.artifactId}</repository>
+                    <tag>${project.version}</tag>
 					<force>true</force>
 					<buildArgs>
 						<JAR_FILE>./target/${project.build.finalName}.jar</JAR_FILE>

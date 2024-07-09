@@ -20,7 +20,7 @@ import jakarta.annotation.Nonnull;
 
 @RestController
 @Validated
-@RequestMapping(value = "/balance", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 public class BalanceController {
 
     private static final Logger LOG = LoggerFactory.getLogger(BalanceController.class);
@@ -28,14 +28,13 @@ public class BalanceController {
     @Autowired
     private BalanceConverterService balanceConverterService;
 
-    @GetMapping("/currency/{code}")
+    @GetMapping("/currency/{code}/convert")
     @Operation(summary = "Get the balance denomination result", description = "Gets the demoniation value of a balance for a particular currency")
     @ApiResponse(responseCode = "200", description = "request was successful")
     @ApiResponse(responseCode = "400", description = "bad request")
     @ApiResponse(responseCode = "404", description = "not found")
     ResponseEntity<String> getValueByMetric(
             @PathVariable("code") @Parameter(description = "The currency code") @Nonnull String code,
-            @RequestParam("code") @Parameter(description = "The currency code") @Nonnull String code2,
             @RequestParam("balance") @Parameter(description = "The balance to calculate") @Nonnull long balance) {
         LOG.debug("Get request received for {} with balance of {}", code, balance);
         return ResponseEntity.ok(balanceConverterService.calculate(code, balance));
