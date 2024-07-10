@@ -29,9 +29,9 @@
 		<junit-jupiter.version>5.10.2</junit-jupiter.version>
 
 		<!-- Other 3rd party dependencies -->
-		<awaitility.version>4.2.1</awaitility.version>
-		<commons-collections4.version>4.4</commons-collections4.version>
 		<jacoco.version>0.8.12</jacoco.version>
+		<springdoc.version>2.6.0</springdoc.version>
+		<equalsverifier.version>3.16.1</equalsverifier.version>
 
 		<!-- containerization -->
 		<docker-spotify-plugin.version>1.4.13</docker-spotify-plugin.version>
@@ -63,14 +63,9 @@
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-            <version>2.6.0</version>
+            <version>${springdoc.version}</version>
         </dependency>
         
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-collections4</artifactId>
-			<version>${commons-collections4.version}</version>
-		</dependency>
 		<dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-jsr310</artifactId>
@@ -102,12 +97,16 @@
 			<artifactId>junit-jupiter-params</artifactId>
 			<scope>test</scope>
 		</dependency>
-
-		<!-- needed to run junit tests in eclipse -->
 		<dependency>
 			<groupId>org.junit.platform</groupId>
 			<artifactId>junit-platform-launcher</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+		    <groupId>nl.jqno.equalsverifier</groupId>
+		    <artifactId>equalsverifier</artifactId>
+		    <version>${equalsverifier.version}</version>
+		    <scope>test</scope>
 		</dependency>
 	</dependencies>
 

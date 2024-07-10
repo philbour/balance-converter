@@ -7,18 +7,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class Currency {
+/**
+ * Currency represents a currency and its denominations
+ */
+public class Currency implements DenominationCalculator {
 
-    private String code;
-    private String description;
-    private Set<Denomination> denominations;
-
-    public Currency() {
-        System.out.println("default");
-    }
+    private final String code;
+    private final String description;
+    private final Set<Denomination> denominations;
 
     @JsonCreator
     public Currency(@JsonProperty("code") String code, @JsonProperty("description") String description,
@@ -32,10 +32,6 @@ public class Currency {
         return code;
     }
 
-    public void setCode(String code) {
-        this.code = code;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -44,6 +40,7 @@ public class Currency {
         return denominations;
     }
 
+    @Override
     public String calculateDenominations(long balance) {
         Map<String, Long> result = new LinkedHashMap<>();
         long remaining = balance;
@@ -67,6 +64,25 @@ public class Currency {
                 .map(e -> e.getValue() + " " + e.getKey())
                 .collect(joining(", "))
                 .concat(" coins");
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(code, denominations, description);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if ((obj == null) || (getClass() != obj.getClass())) return false;
+        Currency other = (Currency)obj;
+        return Objects.equals(code, other.code) && Objects.equals(denominations, other.denominations) && Objects.equals(
+                description, other.description);
+    }
+
+    @Override
+    public String toString() {
+        return "Currency [code=" + code + ", description=" + description + ", denominations=" + denominations + "]";
     }
 
 }

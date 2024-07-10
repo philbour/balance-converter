@@ -62,7 +62,7 @@ public class BalanceConverterService {
 
         if (currency == null) {
             LOG.warn("{} currency not found", code);
-            throw new CurrencyNotFoundException(String.format("%s currency not found", code));
+            throw new CurrencyNotFoundException(code);
         }
 
         return currency.calculateDenominations(balance);

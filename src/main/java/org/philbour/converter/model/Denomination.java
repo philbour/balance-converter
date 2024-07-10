@@ -70,4 +70,10 @@ public class Denomination implements Comparable<Denomination> {
                 && value == other.value;
     }
 
+    @Override
+    public String toString() {
+        return "Denomination [code=" + code + ", description=" + description + ", value=" + value + ", type=" + type
+                + "]";
+    }
+
 }
