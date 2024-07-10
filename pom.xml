@@ -32,11 +32,6 @@
 		<awaitility.version>4.2.1</awaitility.version>
 		<commons-collections4.version>4.4</commons-collections4.version>
 		<jacoco.version>0.8.12</jacoco.version>
-       
-        <!-- Test dependencies -->
-        <commons-io.version>2.16.1</commons-io.version>
-        <awaitility.version>4.2.1</awaitility.version>
-        <testcontainers.version>1.19.8</testcontainers.version>
 
 		<!-- containerization -->
 		<docker-spotify-plugin.version>1.4.13</docker-spotify-plugin.version>
@@ -113,13 +108,6 @@
 			<groupId>org.junit.platform</groupId>
 			<artifactId>junit-platform-launcher</artifactId>
 			<scope>test</scope>
-		</dependency>
-		
-		<dependency>
-			<groupId>commons-io</groupId>
-		   	<artifactId>commons-io</artifactId>
-		   	<version>${commons-io.version}</version>
-		    <scope>test</scope>
 		</dependency>
 	</dependencies>
 
