@@ -19,6 +19,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.annotation.Nonnull;
+import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
 
@@ -39,7 +40,7 @@ public class BalanceController {
     @ApiResponse(responseCode = "404", description = "not found")
     ResponseEntity<String> getValueByMetric(
             @PathVariable("code") @Parameter(description = "The currency code") @Nonnull @NotBlank String code,
-            @RequestParam("balance") @Parameter(description = "The balance to calculate") @Positive(message = "balance must be greater 0") long balance) {
+            @RequestParam("balance") @Parameter(description = "The balance to calculate") @Positive(message = "balance must be greater 0") @Max(value = Long.MAX_VALUE) long balance) {
         LOG.debug("Get request received for {} with balance of {}", code, balance);
         try {
             String result = balanceConverterService.calculate(code, balance);

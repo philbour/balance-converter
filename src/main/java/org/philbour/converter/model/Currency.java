@@ -40,7 +40,7 @@ public class Currency {
         return description;
     }
 
-    public Set<Denomination> getUnits() {
+    public Set<Denomination> getDenominations() {
         return denominations;
     }
 
