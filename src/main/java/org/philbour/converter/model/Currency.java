@@ -44,7 +44,7 @@ public class Currency {
         return denominations;
     }
 
-    public String calculate(long balance) {
+    public String calculateDenominations(long balance) {
         Map<String, Long> result = new LinkedHashMap<>();
         long remaining = balance;
 

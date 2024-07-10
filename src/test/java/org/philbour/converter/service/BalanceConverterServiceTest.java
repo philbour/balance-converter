@@ -17,7 +17,7 @@ class BalanceConverterServiceTest {
         BalanceConverterService denominationCalculator = new BalanceConverterService(new JsonReader());
         denominationCalculator.populateCurrencyMap();
 
-        String result = denominationCalculator.calculate("USD", 87); // $0.87
+        String result = denominationCalculator.convertBalance("USD", 87); // $0.87
 
         assertEquals("3 Quarter, 1 Dime, 2 Penny coins", result);
     }
@@ -27,7 +27,7 @@ class BalanceConverterServiceTest {
         BalanceConverterService denominationCalculator = new BalanceConverterService(new JsonReader());
         denominationCalculator.populateCurrencyMap();
 
-        String result = denominationCalculator.calculate("EUR", 287); // €2.87
+        String result = denominationCalculator.convertBalance("EUR", 287); // €2.87
 
         assertEquals("1 2 Euro, 1 50c, 1 20c, 1 10c, 1 5c, 1 2c coins", result);
     }
@@ -38,7 +38,7 @@ class BalanceConverterServiceTest {
         denominationCalculator.populateCurrencyMap();
 
         Exception exception = assertThrows(CurrencyNotFoundException.class, () -> {
-            denominationCalculator.calculate("GBP", 287); // £2.87
+            denominationCalculator.convertBalance("GBP", 287); // £2.87
         });
 
         assertThat(exception.getMessage()).contains("currency not found");
@@ -49,7 +49,7 @@ class BalanceConverterServiceTest {
         BalanceConverterService denominationCalculator = new BalanceConverterService(new JsonReader());
         denominationCalculator.populateCurrencyMap();
 
-        String result = denominationCalculator.calculate("", 87); // $0.87
+        String result = denominationCalculator.convertBalance("", 87); // $0.87
 
         assertEquals("0", result);
     }
@@ -60,7 +60,7 @@ class BalanceConverterServiceTest {
         BalanceConverterService denominationCalculator = new BalanceConverterService(new JsonReader());
         denominationCalculator.populateCurrencyMap();
 
-        String result = denominationCalculator.calculate("EUR", balance); // $0.87
+        String result = denominationCalculator.convertBalance("EUR", balance); // $0.87
 
         assertEquals("0", result);
     }

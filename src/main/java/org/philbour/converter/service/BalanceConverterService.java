@@ -40,7 +40,15 @@ public class BalanceConverterService {
         }
     }
 
-    public String calculate(String code, long balance) throws CurrencyNotFoundException {
+    /**
+     * Converts a balance into the least number of denominations (bills/coins)
+     *
+     * @param code the currency code
+     * @param balance the balance to convert
+     * @return the calculated denominations as a string
+     * @throws CurrencyNotFoundException if the requested currency code cannot be found
+     */
+    public String convertBalance(String code, long balance) throws CurrencyNotFoundException {
         if (StringUtils.isBlank(code) || balance < 1) {
             return "0";
         }
@@ -56,10 +64,7 @@ public class BalanceConverterService {
             throw new CurrencyNotFoundException(String.format("%s currency not found", code));
         }
 
-        String result = currency.calculate(balance);
-
-        System.out.println(result);
-        return result;
+        return currency.calculateDenominations(balance);
     }
 
 }
