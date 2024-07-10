@@ -36,7 +36,8 @@ public class BalanceConverterService {
             String json = jsonReader.readFile("denominations.json");
             currencyDenominations = mapper.readValue(json, CurrencyDenominations.class);
         } catch (IOException e) {
-            // TODO
+            LOG.error("Error reading denominations file", e);
+            System.exit(-1);
         }
     }
 

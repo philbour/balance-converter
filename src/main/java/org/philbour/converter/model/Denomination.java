@@ -5,6 +5,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Objects;
 
+/**
+ * Denomination represents a unit of currency. 1 cent or 5 euro for example
+ */
 public class Denomination implements Comparable<Denomination> {
 
     private final String code;
