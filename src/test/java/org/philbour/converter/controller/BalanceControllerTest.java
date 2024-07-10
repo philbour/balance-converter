@@ -36,7 +36,7 @@ public class BalanceControllerTest {
     private static final String NEGATIVE_BALANCE = "-2";
 
     @Test
-    void convertBalance_ValidRequest_DenominationsReturned() throws Exception {
+    void convertBalance_ValidRequest_DenominationsReturnedOk() throws Exception {
         when(balanceConverterService.convertBalance(anyString(), anyLong())).thenReturn(RESULT_87_USD);
 
         MvcResult mvcResult = mockMvc.perform(get("/currency/{code}/convert", USD).contentType(
@@ -51,11 +51,11 @@ public class BalanceControllerTest {
         mockMvc.perform(get("/currency/{code}/convert", USD).contentType(MediaType.APPLICATION_JSON)
                 .queryParam("balance", NEGATIVE_BALANCE))
                 .andExpect(status().isBadRequest())
-                .andExpect(content().string("balance must be greater 0"));
+                .andExpect(content().string("balance must be greater than 0"));
     }
 
     @Test
-    void convertBalance_InvalidCurrency_ReturnsBadRequest() throws Exception {
+    void convertBalance_InvalidCurrency_ReturnsNotFound() throws Exception {
         when(balanceConverterService.convertBalance(eq(GBP), anyLong())).thenThrow(new CurrencyNotFoundException(GBP));
 
         mockMvc.perform(get("/currency/{code}/convert", GBP).contentType(MediaType.APPLICATION_JSON)

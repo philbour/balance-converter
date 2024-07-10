@@ -41,8 +41,9 @@ public class BalanceController {
     @ApiResponse(responseCode = "500", description = "internal server error")
     ResponseEntity<String> convertBalance(
             @PathVariable("code") @Parameter(description = "The currency code") @Nonnull @NotBlank String code,
-            @RequestParam("balance") @Parameter(description = "The balance to calculate") @Positive(message = "balance must be greater 0") @Max(value = 100000000, message = "balance cannot be greater than 100,000,000") long balance) {
+            @RequestParam("balance") @Parameter(description = "The balance to calculate") @Positive(message = "balance must be greater than 0") @Max(value = 100000000, message = "balance cannot be greater than 100,000,000") long balance) {
         LOG.debug("Get request received for {} with balance of {}", code, balance);
+
         try {
             String result = balanceConverterService.convertBalance(code, balance);
             return ResponseEntity.ok(result);
