@@ -26,7 +26,7 @@ public class CurrencyDenominations {
     }
 
     public Currency getCurrency(String code) {
-        return currencies.stream().filter(c -> c.getCode().equalsIgnoreCase(code)).findFirst().get();
+        return currencies.stream().filter(c -> c.getCode().equalsIgnoreCase(code)).findFirst().orElse(null);
     }
 
 }

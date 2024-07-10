@@ -19,7 +19,7 @@ import java.nio.charset.StandardCharsets;
 @Component
 public class JsonReader {
 
-    public String readFile(String fileName) {
+    public String readFile(String fileName) throws IOException {
         // https://stackoverflow.com/a/6372170
         InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream(fileName);
         InputStreamReader streamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
@@ -34,10 +34,8 @@ public class JsonReader {
             }
             return sb.toString();
         } catch (IOException e) {
-            e.printStackTrace();
+            throw e;
         }
-
-        return null;
     }
 
 }

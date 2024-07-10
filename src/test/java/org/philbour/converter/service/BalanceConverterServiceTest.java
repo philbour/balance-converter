@@ -1,31 +1,68 @@
 package org.philbour.converter.service;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+import org.philbour.converter.exception.CurrencyNotFoundException;
 import org.philbour.converter.util.JsonReader;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 
 class BalanceConverterServiceTest {
 
     @Test
-    void TestConverter() throws JsonMappingException, JsonProcessingException {
+    void calculate_USDCurrency_ReturnsBalance() throws CurrencyNotFoundException {
         BalanceConverterService denominationCalculator = new BalanceConverterService(new JsonReader());
         denominationCalculator.populateCurrencyMap();
 
-        denominationCalculator.calculate("USD", 87);
-        denominationCalculator.calculate("USD", 287); // $2.87
-        denominationCalculator.calculate("USD", 36);
-        denominationCalculator.calculate("USD", 5);
-        denominationCalculator.calculate("USD", 4);
-        denominationCalculator.calculate("USD", 4389); // $43.89
-        denominationCalculator.calculate("USD", 38157); // $381.57
-        // denominationCalculator.calculate("USD", -1);
+        String result = denominationCalculator.calculate("USD", 87); // $0.87
 
-        denominationCalculator.calculate("EUR", 287); // €2.87
-
-        assertTrue(true);
+        assertEquals("3 Quarter, 1 Dime, 2 Penny coins", result);
     }
+
+    @Test
+    void calculate_EurCurrency_ReturnsBalance() throws CurrencyNotFoundException {
+        BalanceConverterService denominationCalculator = new BalanceConverterService(new JsonReader());
+        denominationCalculator.populateCurrencyMap();
+
+        String result = denominationCalculator.calculate("EUR", 287); // €2.87
+
+        assertEquals("1 2 Euro, 1 50c, 1 20c, 1 10c, 1 5c, 1 2c coins", result);
+    }
+
+    @Test
+    void calculate_CurrencyNotFound_ThrowsException() {
+        BalanceConverterService denominationCalculator = new BalanceConverterService(new JsonReader());
+        denominationCalculator.populateCurrencyMap();
+
+        Exception exception = assertThrows(CurrencyNotFoundException.class, () -> {
+            denominationCalculator.calculate("GBP", 287); // £2.87
+        });
+
+        assertThat(exception.getMessage()).contains("currency not found");
+    }
+
+    @Test
+    void calculate_CurrencyNotSupplied_ReturnsZero() throws CurrencyNotFoundException {
+        BalanceConverterService denominationCalculator = new BalanceConverterService(new JsonReader());
+        denominationCalculator.populateCurrencyMap();
+
+        String result = denominationCalculator.calculate("", 87); // $0.87
+
+        assertEquals("0", result);
+    }
+
+    @ParameterizedTest
+    @ValueSource(longs = {-1, 0})
+    void calculate_BalanceNotValid_ReturnsZero(long balance) throws CurrencyNotFoundException {
+        BalanceConverterService denominationCalculator = new BalanceConverterService(new JsonReader());
+        denominationCalculator.populateCurrencyMap();
+
+        String result = denominationCalculator.calculate("EUR", balance); // $0.87
+
+        assertEquals("0", result);
+    }
+
 }
