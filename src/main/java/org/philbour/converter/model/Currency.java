@@ -58,8 +58,8 @@ public class Currency implements DenominationCalculator {
         return prettyPrint(result);
     }
 
-    private String prettyPrint(Map<String, Long> map) {
-        return map.entrySet()
+    private String prettyPrint(Map<String, Long> resultMap) {
+        return resultMap.entrySet()
                 .stream()
                 .map(e -> e.getValue() + " " + e.getKey())
                 .collect(joining(", "))

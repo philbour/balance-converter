@@ -1,0 +1,38 @@
+{
+	"info": {
+		"_postman_id": "5e34ed02-55b4-4545-a6c1-dcb118b51ecc",
+		"name": "denomination-converter",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3467691"
+	},
+	"item": [
+		{
+			"name": "balance",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/balance/currency/usd/convert?balance=287",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"balance",
+						"currency",
+						"usd",
+						"convert"
+					],
+					"query": [
+						{
+							"key": "balance",
+							"value": "287"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
