@@ -1,10 +1,22 @@
-balance-converter-api
+balance-converter-service
 ========
 
 ![](logo.png)
 
-# Intro
-TODO...
+# Introduction
+Feature to convert and return a balance into a specific currency denomination
+
+# Features
+
+* REST endpoint to convert a balance
+* Can be execute as a stand-alone Spring boot app or run within a Docker container
+* Validation
+* Easily extendable
+
+# Limitations
+
+* Data is read in from static JSON file
+* No endpoint to dynamically add/update currencies
 
 # Prerequisites
 
@@ -20,8 +32,8 @@ Can be run in 2 flavours -
 
 1. Clone repo
 2. Run with IDE or on cli
-    1. Import into IDE
-        1. Within the IDE, run as Spring Boot App
+    1. Import into IDE (eclipse)
+        1. Within the IDE, run as Spring Boot App (requires spring plugin)
     2. Run from command line
         1. Build project `mvn clean install -Ddockerfile.skip`
         2. From the */target* folder, execute `java -jar balance-converter-0.0.1-SNAPSHOT.jar`
@@ -32,5 +44,35 @@ Can be run in 2 flavours -
 ### Steps
 
 1. Clone repo
-2. Run maven install - `mvn clean install`. This will build the jar and also the docker image
-3. From the command line run - `docker run -p 8080:8080 balance-converter:0.0.1-SNAPSHOT`
+2. Run maven install `mvn clean install`. This will build the jar and also the docker image
+3. From the command line run `docker run -p 8080:8080 balance-converter:0.0.1-SNAPSHOT`
+
+# Usage
+
+To get the denominations value for a particular balance, browse to - *http://localhost:8080/balance/currency/{code}/convert?balance=%d*
+
+Replace *{code}* with the currency code. Currently only **USD** and **EUR** supported.
+
+Replace *%d* with the balance to convert.
+
+# Docs
+
+OpenAPI docs available at [localhost:8080/balance/docs](http://localhost:8080/balance/docs)
+
+Swagger docs available at [localhost:8080/balance/docs/swagger-ui/index.html](http://localhost:8080/balance/docs/swagger-ui/index.html)
+
+# Examples
+
+## Get denominations for USD
+
+GET localhost:8080/balance/currency/USD/convert?balance=287
+
+[localhost:8080/balance/currency/USD/convert?balance=287](http://localhost:8080/balance/currency/USD/convert?balance=287)
+
+### Result
+
+2 Dollar, 3 Quarter, 1 Dime, 2 Penny coins
+
+# Future
+
+Loads!
