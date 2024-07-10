@@ -1,5 +1,8 @@
 package org.philbour.converter.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Objects;
 
 public class Denomination implements Comparable<Denomination> {
@@ -9,7 +12,9 @@ public class Denomination implements Comparable<Denomination> {
     private final long value;
     private final DenominationType type;
 
-    public Denomination(String code, String description, long value, DenominationType type) {
+    @JsonCreator
+    public Denomination(@JsonProperty("code") String code, @JsonProperty("description") String description,
+            @JsonProperty("value") long value, @JsonProperty("type") DenominationType type) {
         this.code = code;
         this.description = description;
         this.value = value;

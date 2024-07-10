@@ -5,10 +5,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 import org.philbour.converter.util.JsonReader;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+
 class BalanceConverterServiceTest {
 
     @Test
-    void TestFidelity() {
+    void TestConverter() throws JsonMappingException, JsonProcessingException {
         BalanceConverterService denominationCalculator = new BalanceConverterService(new JsonReader());
         denominationCalculator.populateCurrencyMap();
 

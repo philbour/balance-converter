@@ -20,6 +20,7 @@ import java.nio.charset.StandardCharsets;
 public class JsonReader {
 
     public String readFile(String fileName) {
+        // https://stackoverflow.com/a/6372170
         InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream(fileName);
         InputStreamReader streamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
         try (BufferedReader br = new BufferedReader(streamReader)) {

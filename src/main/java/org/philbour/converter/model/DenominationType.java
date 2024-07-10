@@ -8,12 +8,12 @@
 
 package org.philbour.converter.model;
 
-import com.google.gson.annotations.SerializedName;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public enum DenominationType {
-    @SerializedName("coin")
+    @JsonProperty("coin")
     COIN,
-    @SerializedName("note")
+    @JsonProperty("note")
     NOTE
 
 }

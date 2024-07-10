@@ -10,12 +10,20 @@ package org.philbour.converter.model.json;
 
 import org.philbour.converter.model.Currency;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class CurrencyDenominations {
 
-    private final List<Currency> currencies = new ArrayList<>();
+    private List<Currency> currencies = new ArrayList<>();
+
+    @JsonCreator
+    public CurrencyDenominations(@JsonProperty("currencies") List<Currency> currencies) {
+        this.currencies = currencies;
+    }
 
     public Currency getCurrency(String code) {
         return currencies.stream().filter(c -> c.getCode().equalsIgnoreCase(code)).findFirst().get();

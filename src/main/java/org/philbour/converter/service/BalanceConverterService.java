@@ -7,7 +7,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import com.google.gson.Gson;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import jakarta.annotation.PostConstruct;
 
@@ -24,12 +26,13 @@ public class BalanceConverterService {
     }
 
     @PostConstruct
-    public void populateCurrencyMap() {
+    public void populateCurrencyMap() throws JsonMappingException, JsonProcessingException {
         LOG.debug("Populating currency map");
 
         String json = jsonReader.readFile("denominations.json");
-        Gson gson = new Gson();
-        cd = gson.fromJson(json, CurrencyDenominations.class);
+
+        ObjectMapper mapper = new ObjectMapper();
+        cd = mapper.readValue(json, CurrencyDenominations.class);
     }
 
     public String calculate(String code, long balance) {

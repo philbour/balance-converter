@@ -76,11 +76,10 @@
 			<artifactId>commons-collections4</artifactId>
 			<version>${commons-collections4.version}</version>
 		</dependency>
-		
 		<dependency>
-		 	<groupId>com.google.code.gson</groupId>
-		  	<artifactId>gson</artifactId>
-		</dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+        </dependency>
 
 		<!-- test -->
 		<dependency>
