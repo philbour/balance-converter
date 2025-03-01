@@ -9,7 +9,7 @@ Service to convert a balance into a specific currency denomination. The balance 
 # Features
 
 * REST endpoint to convert a balance
-* Can be execute as a stand-alone Spring boot app or run within a Docker container
+* Can be executed as a stand-alone Spring boot app or run within a Docker container
 * Validation to protect from erroneous requests
 * Easily extendable by adding more currencies/denominations to the JSON data file
 * 88.2% code coverage
